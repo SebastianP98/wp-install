@@ -5,6 +5,8 @@ clear
 
 echo "Please provide your domain name without the www. (e.g. mydomain.com)"
 read -p "Type your domain name, then press [ENTER] : " MY_DOMAIN
+echo "Please provide your email"
+read -p "Type your email, then press [ENTER] : " EMAIL
 apt update -y
 apt upgrade -y
 apt install nginx -y
