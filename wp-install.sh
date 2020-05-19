@@ -9,12 +9,20 @@ echo "Please provide your email"
 read -p "Type your email, then press [ENTER] : " EMAIL
 apt update -y
 apt upgrade -y
+echo "install nginx -y"
 apt install nginx -y
+echo "install python-software-properties -y"
 apt install python-software-properties -y
+echo "add-apt-repository ppa:ondrej/php -y"
 add-apt-repository ppa:ondrej/php -y
+echo "add-apt-repository universe -y"
 add-apt-repository universe -y
+echo "add-apt-repository ppa:certbot/certbot -y"
 add-apt-repository ppa:certbot/certbot -y
+echo "apt update -y"
 apt update -y
+echo "apt install ed certbot python3-certbot-nginx php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php-mbstring php-gettext php-curl php7.4-gd php7.4-cgi -y
+phpenmod mbstring"
 apt install ed certbot python3-certbot-nginx php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php-mbstring php-gettext php-curl php7.4-gd php7.4-cgi -y
 phpenmod mbstring
 
