@@ -21,9 +21,10 @@ echo "add-apt-repository ppa:certbot/certbot -y"
 add-apt-repository ppa:certbot/certbot -y
 echo "apt update -y"
 apt update -y
-echo "apt install ed certbot python3-certbot-nginx php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php-mbstring php-gettext php-curl php7.4-gd php7.4-cgi -y
-phpenmod mbstring"
-apt install ed certbot python3-certbot-nginx php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php-mbstring php-gettext php-curl php7.4-gd php7.4-cgi -y
+echo "apt install ed certbot python3-certbot-nginx "
+apt install ed certbot python3-certbot-nginx 
+echo "apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php-mbstring php-gettext php-curl php7.4-gd php7.4-cgi -y"
+apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php-mbstring php-gettext php-curl php7.4-gd php7.4-cgi -y
 phpenmod mbstring
 
 perl -pi -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php/7.4/fpm/php.ini
