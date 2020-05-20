@@ -11,9 +11,10 @@ apt install nginx -y
 apt install python-software-properties -y
 add-apt-repository ppa:ondrej/php -y
 add-apt-repository universe -y
-add-apt-repository ppa:certbot/certbot -y
+#add-apt-repository ppa:certbot/certbot -y
 apt update -y
-apt install ed certbot python3-certbot-nginx php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php-mbstring php-gettext php-curl php7.4-gd php7.4-cgi -y
+#apt install ed certbot python3-certbot-nginx 
+apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php-mbstring php-gettext php-curl php7.4-gd php7.4-cgi -y
 phpenmod mbstring
 
 perl -pi -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php/7.4/fpm/php.ini
@@ -31,7 +32,7 @@ perl -pi -e "s/#//g" /etc/nginx/sites-available/$MY_DOMAIN
 apt install mariadb-client mariadb-server -y
 apt install expect -y
 
-certbot certonly -n -d $MY_DOMAIN --agree-tos -m $EMAIL --nginx
+# certbot certonly -n -d $MY_DOMAIN --agree-tos -m $EMAIL --nginx
 
 
 CURRENT_MYSQL_PASSWORD=''
