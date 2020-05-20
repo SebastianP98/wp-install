@@ -24,14 +24,35 @@ echo "apt update -y" >> file.txt
 apt update -y
 echo "apt install ed certbot python3-certbot-nginx " >> file.txt
 apt install ed certbot python3-certbot-nginx 
-echo "apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php-mbstring php-gettext php-curl php7.4-gd php7.4-cgi -y" >> file.txt
-apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php-mbstring php-gettext php-curl php7.4-gd php7.4-cgi -y
+echo "apt install php7.4-fpm" >> file.txt
+apt install php7.4-fpm
+echo "" >> file.txt
+apt install php7.4-xml
+echo "apt install php7.4-xml" >> file.txt
+apt install php7.4-mysql
+echo "apt install php7.4-mysql" >> file.txt
+apt install php7.4-dev
+echo "apt install php7.4-dev" >> file.txt
+apt install php-mbstring
+echo "apt install php-mbstring" >> file.txt
+apt install php-gettext
+echo "apt install php-gettext" >> file.txt
+apt install php-curl
+echo "apt install php-curl" >> file.txt
+apt install php7.4-gd
+echo "apt install php7.4-gd" >> file.txt
+apt install php7.4-cgi -y
+echo "apt install php7.4-cgi -y" >> file.txt
 phpenmod mbstring
+
+echo "phpenmod mbstring" >> file.txt
 
 perl -pi -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php/7.4/fpm/php.ini
 perl -pi -e "s/upload_max_filesize=2M/upload_max_filesize=100M/g" /etc/php/7.4/fpm/php.ini
 perl -pi -e "s/memory_limit = 128M/memory_limit = 256M/g" /etc/php/7.4/fpm/php.ini
 perl -pi -e "s/post_max_size = 8M/post_max_size = 100M/g" /etc/php/7.4/fpm/php.ini
+
+echo "perl" >> file.txt
 
 cd /tmp
 wget https://gist.githubusercontent.com/TaEduard/8361916fabd52e1d72b489efa3329e1c/raw/9cfe94a25f523ba4cacc6def7629888825f40ac5/nginx-wordpress
@@ -45,6 +66,7 @@ apt install expect -y
 
 certbot certonly -n -d $MY_DOMAIN --agree-tos -m $EMAIL --nginx
 
+echo "certbot certonly -n -d $MY_DOMAIN --agree-tos -m $EMAIL --nginx" >> file.txt
 
 CURRENT_MYSQL_PASSWORD=''
 
@@ -85,6 +107,7 @@ apt purge expect -y
 apt autoremove -y
 apt autoclean -y
 
+echo "apt autoclean -y" >> file.txt
 
 cd /tmp
 wget https://wordpress.org/latest.tar.gz
@@ -103,6 +126,8 @@ perl -pi -e "s/password_here/$userpass/g" /var/www/$MY_DOMAIN/wp-config.php
 service nginx restart
 service php7.4-fpm restart
 service mysql restart
+
+echo "service mysql restart" >> file.txt
 
 SALT=$(curl -L https://api.wordpress.org/secret-key/1.1/salt/)
 STRING='put your unique phrase here'
