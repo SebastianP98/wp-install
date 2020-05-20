@@ -55,15 +55,23 @@ perl -pi -e "s/post_max_size = 8M/post_max_size = 100M/g" /etc/php/7.4/fpm/php.i
 echo "perl" >> file.txt
 
 cd /tmp
+echo "1" >> file.txt
 wget https://gist.githubusercontent.com/TaEduard/8361916fabd52e1d72b489efa3329e1c/raw/9cfe94a25f523ba4cacc6def7629888825f40ac5/nginx-wordpress
+echo "2" >> file.txt
 mv ./nginx-wordpress /etc/nginx/sites-available/$MY_DOMAIN
+echo "3" >> file.txt
 ln -s /etc/nginx/sites-available/$MY_DOMAIN /etc/nginx/sites-enabled/
+echo "4" >> file.txt
 perl -pi -e "s/example.com/$MY_DOMAIN/g" /etc/nginx/sites-available/$MY_DOMAIN
+echo "5" >> file.txt
 perl -pi -e "s/www.example.com/www.$MY_DOMAIN/g" /etc/nginx/sites-available/$MY_DOMAIN
+echo "6" >> file.txt
 perl -pi -e "s/#//g" /etc/nginx/sites-available/$MY_DOMAIN
+echo "7" >> file.txt
 apt install mariadb-client mariadb-server -y
+echo "8" >> file.txt
 apt install expect -y
-
+echo "9" >> file.txt
 certbot certonly -n -d $MY_DOMAIN --agree-tos -m $EMAIL --nginx
 
 echo "certbot certonly -n -d $MY_DOMAIN --agree-tos -m $EMAIL --nginx" >> file.txt
