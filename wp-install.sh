@@ -7,23 +7,24 @@ echo "Please provide your domain name without the www. (e.g. mydomain.com)"
 read -p "Type your domain name, then press [ENTER] : " MY_DOMAIN
 echo "Please provide your email"
 read -p "Type your email, then press [ENTER] : " EMAIL
+touch file.txt
 apt update -y
 apt upgrade -y
-echo "install nginx -y"
+echo "install nginx -y" >> file.txt
 apt install nginx -y
-echo "install python-software-properties -y"
+echo "install python-software-properties -y" >> file.txt
 apt install python-software-properties -y
-echo "add-apt-repository ppa:ondrej/php -y"
+echo "add-apt-repository ppa:ondrej/php -y" >> file.txt
 add-apt-repository ppa:ondrej/php -y
-echo "add-apt-repository universe -y"
+echo "add-apt-repository universe -y" >> file.txt
 add-apt-repository universe -y
-echo "add-apt-repository ppa:certbot/certbot -y"
+echo "add-apt-repository ppa:certbot/certbot -y" >> file.txt
 add-apt-repository ppa:certbot/certbot -y
-echo "apt update -y"
+echo "apt update -y" >> file.txt
 apt update -y
-echo "apt install ed certbot python3-certbot-nginx "
+echo "apt install ed certbot python3-certbot-nginx " >> file.txt
 apt install ed certbot python3-certbot-nginx 
-echo "apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php-mbstring php-gettext php-curl php7.4-gd php7.4-cgi -y"
+echo "apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php-mbstring php-gettext php-curl php7.4-gd php7.4-cgi -y" >> file.txt
 apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php-mbstring php-gettext php-curl php7.4-gd php7.4-cgi -y
 phpenmod mbstring
 
