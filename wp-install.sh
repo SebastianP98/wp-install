@@ -6,15 +6,17 @@ clear
 
 echo "Please provide your domain name without the www. (e.g. mydomain.com)"
 read -p "Type your domain name, then press [ENTER] : " MY_DOMAIN
+
+echo "Please provide your Email for the domain name"
+read -p "Type your Email for the domain name, then press [ENTER] : " EMAIL
+
 apt update -y
 apt upgrade -y
 apt install nginx -y
 apt install python-software-properties -y
 add-apt-repository ppa:ondrej/php -y
 add-apt-repository universe -y
-#add-apt-repository ppa:certbot/certbot -y
 apt update -y
-#apt install ed certbot python3-certbot-nginx 
 apt install ed
 apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php-mbstring php-gettext php-curl php7.4-gd php7.4-cgi -y
 phpenmod mbstring
@@ -30,12 +32,8 @@ mv ./nginx-wordpress /etc/nginx/sites-available/$MY_DOMAIN
 ln -s /etc/nginx/sites-available/$MY_DOMAIN /etc/nginx/sites-enabled/
 perl -pi -e "s/example.com/$MY_DOMAIN/g" /etc/nginx/sites-available/$MY_DOMAIN
 perl -pi -e "s/www.example.com/www.$MY_DOMAIN/g" /etc/nginx/sites-available/$MY_DOMAIN
-#perl -pi -e "s/#//g" /etc/nginx/sites-available/$MY_DOMAIN
 apt install mariadb-client mariadb-server -y
 apt install expect -y
-
-# certbot certonly -n -d $MY_DOMAIN --agree-tos -m $EMAIL --nginx
-
 
 CURRENT_MYSQL_PASSWORD=''
 
@@ -99,6 +97,12 @@ SALT=$(curl -L https://api.wordpress.org/secret-key/1.1/salt/)
 STRING='put your unique phrase here'
 printf '%s\n' "g/$STRING/d" a "$SALT" . w | ed -s /var/www/$MY_DOMAIN/wp-config.php
 
+add-apt-repository ppa:certbot/certbot -y
+apt update -y
+apt install certbot python3-certbot-nginx -y
+certbot certonly -n -d $MY_DOMAIN --agree-tos -m $EMAIL --nginx
+perl -pi -e "s/#//g" /etc/nginx/sites-available/$MY_DOMAIN
+service nginx restart
 
 rm -r /tmp/*
 
