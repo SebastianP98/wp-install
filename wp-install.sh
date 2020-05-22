@@ -1,4 +1,5 @@
 #!/bin/bash
+set -xv
 
 rm -r /tmp/*
 clear
@@ -14,6 +15,7 @@ add-apt-repository universe -y
 #add-apt-repository ppa:certbot/certbot -y
 apt update -y
 #apt install ed certbot python3-certbot-nginx 
+apt install ed
 apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php-mbstring php-gettext php-curl php7.4-gd php7.4-cgi -y
 phpenmod mbstring
 
