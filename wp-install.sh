@@ -28,7 +28,7 @@ mv ./nginx-wordpress /etc/nginx/sites-available/$MY_DOMAIN
 ln -s /etc/nginx/sites-available/$MY_DOMAIN /etc/nginx/sites-enabled/
 perl -pi -e "s/example.com/$MY_DOMAIN/g" /etc/nginx/sites-available/$MY_DOMAIN
 perl -pi -e "s/www.example.com/www.$MY_DOMAIN/g" /etc/nginx/sites-available/$MY_DOMAIN
-perl -pi -e "s/#//g" /etc/nginx/sites-available/$MY_DOMAIN
+#perl -pi -e "s/#//g" /etc/nginx/sites-available/$MY_DOMAIN
 apt install mariadb-client mariadb-server -y
 apt install expect -y
 
