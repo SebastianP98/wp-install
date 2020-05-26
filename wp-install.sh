@@ -13,7 +13,7 @@ read -p "Type your Email for the domain name, then press [ENTER] : " EMAIL
 apt update -y
 apt upgrade -y
 apt install nginx -y
-apt install python-software-properties -y
+apt install software-properties-common -y
 add-apt-repository ppa:ondrej/php -y
 add-apt-repository universe -y
 apt update -y
