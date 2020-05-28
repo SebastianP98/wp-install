@@ -18,7 +18,7 @@ add-apt-repository ppa:ondrej/php -y
 add-apt-repository universe -y
 apt update -y
 apt install ed
-apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php7.4-mbstring php7.4-common php-curl php7.4-gd php7.4-cgi -y
+apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php7.4-mbstring php7.4-common php-common php-curl php7.4-gd php7.4-cgi -y
 phpenmod mbstring
 
 perl -pi -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php/7.4/fpm/php.ini
@@ -100,7 +100,7 @@ printf '%s\n' "g/$STRING/d" a "$SALT" . w | ed -s /var/www/$MY_DOMAIN/wp-config.
 apt update -y
 apt install certbot python3-certbot-nginx -y
 apt update -y
-certbot -n -d $MY_DOMAIN --agree-tos -m $EMAIL --nginx
+certbot certonly -n -d $MY_DOMAIN --agree-tos -m $EMAIL --nginx
 perl -pi -e "s/#//g" /etc/nginx/sites-available/$MY_DOMAIN
 service nginx restart
 
