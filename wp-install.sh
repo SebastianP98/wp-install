@@ -97,8 +97,10 @@ SALT=$(curl -L https://api.wordpress.org/secret-key/1.1/salt/)
 STRING='put your unique phrase here'
 printf '%s\n' "g/$STRING/d" a "$SALT" . w | ed -s /var/www/$MY_DOMAIN/wp-config.php
 
+add-apt-repository universe
 apt update -y
 apt install certbot python3-certbot-nginx -y
+apt update -y
 certbot -n -d $MY_DOMAIN --agree-tos -m $EMAIL --nginx
 perl -pi -e "s/#//g" /etc/nginx/sites-available/$MY_DOMAIN
 service nginx restart
