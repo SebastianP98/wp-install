@@ -103,7 +103,7 @@ apt install certbot python3-certbot-nginx -y
 ufw allow https
 apt update -y
 #certbot certonly -n -d $MY_DOMAIN --agree-tos -m $EMAIL --nginx
-certbot certonly --agree-tos --webroot -w /var/www/$MY_DOMAIN/ -d $MY_DOMAIN  -m $EMAIL
+certbot certonly --agree-tos --webroot -w /var/www/html -d $MY_DOMAIN  -m $EMAIL
 perl -pi -e "s/#//g" /etc/nginx/sites-available/$MY_DOMAIN
 service nginx restart
 
