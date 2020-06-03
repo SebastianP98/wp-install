@@ -100,7 +100,6 @@ printf '%s\n' "g/$STRING/d" a "$SALT" . w | ed -s /var/www/$MY_DOMAIN/wp-config.
 apt update -y
 apt install certbot python3-certbot-nginx -y
 #curl -o- https://raw.githubusercontent.com/vinyll/certbot-install/master/install.sh | bash
-ufw allow https
 apt update -y
 #certbot certonly -n -d $MY_DOMAIN --agree-tos -m $EMAIL --nginx
 certbot certonly --agree-tos --webroot -w /var/www/html -d $MY_DOMAIN  -m $EMAIL
