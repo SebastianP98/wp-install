@@ -10,6 +10,9 @@ read -p "Type your domain name, then press [ENTER] : " MY_DOMAIN
 echo "Please provide your Email for the domain name"
 read -p "Type your Email for the domain name, then press [ENTER] : " EMAIL
 
+export EMAIL=$EMAIL
+export MY_DOMAIN=$MY_DOMAIN
+
 apt update -y
 apt upgrade -y
 apt install nginx -y
@@ -97,15 +100,17 @@ SALT=$(curl -L https://api.wordpress.org/secret-key/1.1/salt/)
 STRING='put your unique phrase here'
 printf '%s\n' "g/$STRING/d" a "$SALT" . w | ed -s /var/www/$MY_DOMAIN/wp-config.php
 
-apt update -y
-apt install certbot python3-certbot-nginx -y
-#curl -o- https://raw.githubusercontent.com/vinyll/certbot-install/master/install.sh | bash
-apt update -y
-#certbot certonly -n -d $MY_DOMAIN --agree-tos -m $EMAIL --nginx
-certbot certonly -n  -d $MY_DOMAIN -m $EMAIL --agree-tos --webroot -w /var/www/html 
-#certbot certonly --email $EMAIL --agree-tos --webroot -w /var/www/$MY_DOMAIN -d $MY_DOMAIN
-perl -pi -e "s/#//g" /etc/nginx/sites-available/$MY_DOMAIN
-service nginx restart
+# apt update -y
+# apt install certbot python3-certbot-nginx -y
+# #curl -o- https://raw.githubusercontent.com/vinyll/certbot-install/master/install.sh | bash
+# apt update -y
+# #certbot certonly -n -d $MY_DOMAIN --agree-tos -m $EMAIL --nginx
+# certbot certonly -n  -d $MY_DOMAIN -m $EMAIL --agree-tos --webroot -w /var/www/html 
+# export EMAIL=$EMAIL
+# export DOMAIN=$MY_DOMAIN
+# #certbot certonly --email $EMAIL --agree-tos --webroot -w /var/www/$MY_DOMAIN -d $MY_DOMAIN
+# perl -pi -e "s/#//g" /etc/nginx/sites-available/$MY_DOMAIN
+# service nginx restart
 
 rm -r /tmp/*
 
