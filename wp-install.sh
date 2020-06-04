@@ -117,7 +117,7 @@ printf '%s\n' "g/$STRING/d" a "$SALT" . w | ed -s /var/www/$MY_DOMAIN/wp-config.
 
 if [[ "$ok" == 0 ]]
 then
-    aadd-apt-repository ppa:certbot/certbot -y
+    add-apt-repository ppa:certbot/certbot -y
 fi
 
 apt update -y
