@@ -10,9 +10,6 @@ read -p "Type your domain name, then press [ENTER] : " MY_DOMAIN
 echo "Please provide your Email for the domain name"
 read -p "Type your Email for the domain name, then press [ENTER] : " EMAIL
 
-export EMAIL=$EMAIL
-export MY_DOMAIN=$MY_DOMAIN
-
 apt update -y
 apt upgrade -y
 apt install nginx -y
