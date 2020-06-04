@@ -21,21 +21,21 @@ read -p "Type your Email for the domain name, then press [ENTER] : " EMAIL
 apt update -y
 apt upgrade -y
 apt install nginx -y
-if [[ "$ok" == 1]]
+if [[ "$ok" == 1 ]]
 then
-    $(apt install software-properties-common -y)
+    apt install software-properties-common -y
 else
-    $(apt install python-software-properties -y)
+    apt install python-software-properties -y
 fi
 add-apt-repository ppa:ondrej/php -y
 add-apt-repository universe -y
 apt update -y
 apt install ed
-if [[ "$ok" == 1]]
+if [[ "$ok" == 1 ]]
 then
-    $(apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php7.4-mbstring php7.4-common php-common php-curl php7.4-gd php7.4-cgi -y)
+    apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php7.4-mbstring php7.4-common php-common php-curl php7.4-gd php7.4-cgi -y
 else
-    $(apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php-mbstring php-gettext php-curl php7.4-gd php7.4-cgi -y)
+    apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php-mbstring php-gettext php-curl php7.4-gd php7.4-cgi -y
 fi
 phpenmod mbstring
 
@@ -114,6 +114,11 @@ service mysql restart
 SALT=$(curl -L https://api.wordpress.org/secret-key/1.1/salt/)
 STRING='put your unique phrase here'
 printf '%s\n' "g/$STRING/d" a "$SALT" . w | ed -s /var/www/$MY_DOMAIN/wp-config.php
+
+if [[ "$ok" == 0 ]]
+then
+    aadd-apt-repository ppa:certbot/certbot -y
+fi
 
 apt update -y
 apt install certbot python3-certbot-nginx -y
