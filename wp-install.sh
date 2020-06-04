@@ -6,7 +6,7 @@ clear
 
 var=$(lsb_release -sr)
 ok=0
-if [[ "$var" == 16.04 ]]
+if [[ "$var" == 20.04 ]]
 then
         ok=1
 fi
