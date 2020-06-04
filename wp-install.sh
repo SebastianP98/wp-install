@@ -4,6 +4,14 @@ set -xv
 rm -r /tmp/*
 clear
 
+var=$(lsb_release -sr)
+ok=0
+if [[ "$var" == 16.04 ]]
+then
+        ok=1
+fi
+
+
 echo "Please provide your domain name without the www. (e.g. mydomain.com)"
 read -p "Type your domain name, then press [ENTER] : " MY_DOMAIN
 
@@ -13,12 +21,22 @@ read -p "Type your Email for the domain name, then press [ENTER] : " EMAIL
 apt update -y
 apt upgrade -y
 apt install nginx -y
-apt install software-properties-common -y
+if [[ "$ok" == 1]]
+then
+    apt install software-properties-common -y
+else
+    apt install python-software-properties -y
+fi
 add-apt-repository ppa:ondrej/php -y
 add-apt-repository universe -y
 apt update -y
 apt install ed
-apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php7.4-mbstring php7.4-common php-common php-curl php7.4-gd php7.4-cgi -y
+if [[ "$ok" == 1]]
+then
+    apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php7.4-mbstring php7.4-common php-common php-curl php7.4-gd php7.4-cgi -y
+else
+    apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php-mbstring php-gettext php-curl php7.4-gd php7.4-cgi -y
+fi
 phpenmod mbstring
 
 perl -pi -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php/7.4/fpm/php.ini
