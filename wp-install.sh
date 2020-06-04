@@ -30,7 +30,7 @@ perl -pi -e "s/memory_limit = 128M/memory_limit = 256M/g" /etc/php/7.4/fpm/php.i
 perl -pi -e "s/post_max_size = 8M/post_max_size = 100M/g" /etc/php/7.4/fpm/php.ini
 
 cd /tmp
-wget https://gist.githubusercontent.com/TaEduard/8361916fabd52e1d72b489efa3329e1c/raw/9cfe94a25f523ba4cacc6def7629888825f40ac5/nginx-wordpress
+wget https://gist.githubusercontent.com/TaEduard/8361916fabd52e1d72b489efa3329e1c/raw/cc8ac09bda31d10279b17470e551ae0a91571ec9/nginx-wordpress
 mv ./nginx-wordpress /etc/nginx/sites-available/$MY_DOMAIN
 ln -s /etc/nginx/sites-available/$MY_DOMAIN /etc/nginx/sites-enabled/
 perl -pi -e "s/example.com/$MY_DOMAIN/g" /etc/nginx/sites-available/$MY_DOMAIN
@@ -100,17 +100,11 @@ SALT=$(curl -L https://api.wordpress.org/secret-key/1.1/salt/)
 STRING='put your unique phrase here'
 printf '%s\n' "g/$STRING/d" a "$SALT" . w | ed -s /var/www/$MY_DOMAIN/wp-config.php
 
-# apt update -y
-# apt install certbot python3-certbot-nginx -y
-# #curl -o- https://raw.githubusercontent.com/vinyll/certbot-install/master/install.sh | bash
-# apt update -y
-# #certbot certonly -n -d $MY_DOMAIN --agree-tos -m $EMAIL --nginx
-# certbot certonly -n  -d $MY_DOMAIN -m $EMAIL --agree-tos --webroot -w /var/www/html 
-# export EMAIL=$EMAIL
-# export DOMAIN=$MY_DOMAIN
-# #certbot certonly --email $EMAIL --agree-tos --webroot -w /var/www/$MY_DOMAIN -d $MY_DOMAIN
-# perl -pi -e "s/#//g" /etc/nginx/sites-available/$MY_DOMAIN
-# service nginx restart
+apt update -y
+apt install certbot python3-certbot-nginx -y
+certbot certonly -n  -d $MY_DOMAIN -m $EMAIL --agree-tos --webroot -w /var/www/html 
+perl -pi -e "s/#|;#//g" /etc/nginx/sites-available/$MY_DOMAIN
+service nginx restart
 
 rm -r /tmp/*
 
