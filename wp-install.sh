@@ -13,10 +13,12 @@ fi
 
 
 echo "Please provide your domain name without the www. (e.g. mydomain.com)"
-read -p "Type your domain name, then press [ENTER] : " MY_DOMAIN
+# read -p "Type your domain name, then press [ENTER] : " MY_DOMAIN
+MY_DOMAIN = $1
 
 echo "Please provide your Email for the domain name"
-read -p "Type your Email for the domain name, then press [ENTER] : " EMAIL
+# read -p "Type your Email for the domain name, then press [ENTER] : " EMAIL
+EMAIL = $2
 
 apt update -y
 apt upgrade -y
