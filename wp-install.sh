@@ -122,7 +122,7 @@ then
     add-apt-repository ppa:certbot/certbot -y
 fi
 
-
+sleep 5m
 
 apt update -y
 apt install certbot python3-certbot-nginx -y
