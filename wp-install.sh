@@ -122,6 +122,8 @@ then
     add-apt-repository ppa:certbot/certbot -y
 fi
 
+
+
 apt update -y
 apt install certbot python3-certbot-nginx -y
 certbot certonly -n  -d $MY_DOMAIN -m $EMAIL --agree-tos --webroot -w /var/www/html 
