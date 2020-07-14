@@ -109,7 +109,7 @@ chmod -R g+w /var/www/$MY_DOMAIN/wp-content/plugins
 perl -pi -e "s/database_name_here/$dbname/g" /var/www/$MY_DOMAIN/wp-config.php
 perl -pi -e "s/username_here/$dbuser/g" /var/www/$MY_DOMAIN/wp-config.php
 perl -pi -e "s/password_here/$userpass/g" /var/www/$MY_DOMAIN/wp-config.php
-wget -p /var/www/$MY_DOMAIN/wp-content/plugins https://downloads.wordpress.org/plugin/wp-security-audit-log.4.1.2.zip
+wget -P /var/www/$MY_DOMAIN/wp-content/plugins https://downloads.wordpress.org/plugin/wp-security-audit-log.4.1.2.zip
 unzip var/www/$MY_DOMAIN/wp-content/plugins/wp-security-audit-log.4.1.2.zip
 service nginx restart
 service php7.4-fpm restart
