@@ -109,8 +109,7 @@ chmod -R g+w /var/www/$MY_DOMAIN/wp-content/plugins
 perl -pi -e "s/database_name_here/$dbname/g" /var/www/$MY_DOMAIN/wp-config.php
 perl -pi -e "s/username_here/$dbuser/g" /var/www/$MY_DOMAIN/wp-config.php
 perl -pi -e "s/password_here/$userpass/g" /var/www/$MY_DOMAIN/wp-config.php
-sed -i "s/define( 'WP_DEBUG', false );/define( 'WP_DEBUG', true );\ndefine( 'WP_DEBUG_LOG', \"/var/www/$MY_DOMAIN/wp-content/debug.txt\" );\ndefine( 'WP_DEBUG_DISPLAY', false );\n@ini_set( 'display_errors', 0 );/g" /var/www/$MY_DOMAIN/wp-config.php
-#sed -i "s/define( 'WP_DEBUG', false );/define( 'WP_DEBUG', true );\ndefine( 'WP_DEBUG_LOG', true );/g" /var/www/$MY_DOMAIN/wp-config.php
+sed -i "s/define( 'WP_DEBUG', false );/define( 'WP_DEBUG', true );\ndefine( 'WP_DEBUG_LOG', true );/g" /var/www/$MY_DOMAIN/wp-config.php
 service nginx restart
 service php7.4-fpm restart
 service mysql restart
