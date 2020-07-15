@@ -112,6 +112,7 @@ perl -pi -e "s/password_here/$userpass/g" /var/www/$MY_DOMAIN/wp-config.php
 apt install unzip
 wget -P /var/www/$MY_DOMAIN/wp-content/plugins https://downloads.wordpress.org/plugin/wp-security-audit-log.4.1.2.zip
 unzip /var/www/$MY_DOMAIN/wp-content/plugins/wp-security-audit-log.4.1.2.zip -d /var/www/$MY_DOMAIN/wp-content/plugins/
+rm /var/www/$MY_DOMAIN/wp-content/plugins https://downloads.wordpress.org/plugin/wp-security-audit-log.4.1.2.zip
 service nginx restart
 service php7.4-fpm restart
 service mysql restart
