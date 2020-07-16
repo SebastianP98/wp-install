@@ -140,6 +140,8 @@ ln -s /var/log/nginx/access.log /var/log/nginx/access.txt
 ln -s /var/log/nginx/error.log /var/log/nginx/error.txt
 ln -s /var/log/syslog /var/log/syslog.txt
 
+update-alternatives --install /usr/sbin/python python /usr/bin/python3 20
+
 wget https://github.com/microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_v1.13.7-0/omsagent-1.13.7-0.universal.x64.sh
 chmod +x omsagent-1.13.7-0.universal.x64.sh
 ./omsagent-1.13.7-0.universal.x64.sh --install -w 61dd12c1-c8fe-4a83-8c1f-dda7103ee57e -s o+60hlahNs58NIM19cwO4rcdeYdaXYJB2iX+DRXMV+e7i6WF2tzOzdWpDk8DWrLLy12HFIuGc31GLwJv/KUdcA==
