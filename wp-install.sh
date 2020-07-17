@@ -23,12 +23,14 @@ EMAIL=$2
 apt update -y
 apt upgrade -y
 apt install nginx -y
-if [[ "$ok" == 1 ]]
-then
-    apt install software-properties-common -y
-else
-    apt install python-software-properties -y
-fi
+#if [[ "$ok" == 1 ]]
+#then
+#    apt install software-properties-common -y
+#else
+#    apt install python-software-properties -y
+#fi
+apt install software-properties-common -y
+
 add-apt-repository ppa:ondrej/php -y
 add-apt-repository universe -y
 apt update -y
