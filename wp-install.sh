@@ -23,12 +23,6 @@ EMAIL=$2
 apt update -y
 apt upgrade -y
 apt install nginx -y
-#if [[ "$ok" == 1 ]]
-#then
-#    apt install software-properties-common -y
-#else
-#    apt install python-software-properties -y
-#fi
 apt install software-properties-common -y
 
 add-apt-repository ppa:ondrej/php -y
@@ -42,13 +36,6 @@ else
     apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php-mbstring php-gettext php-curl php7.4-gd php7.4-cgi -y
 fi
 phpenmod mbstring
-
-#wget https://github.com/microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_v1.13.7-0/omsagent-1.13.7-0.universal.x64.sh
-#chmod +x omsagent-1.13.7-0.universal.x64.sh
-#./omsagent-1.13.7-0.universal.x64.sh --install -w 61dd12c1-c8fe-4a83-8c1f-dda7103ee57e -s o+60hlahNs58NIM19cwO4rcdeYdaXYJB2iX+DRXMV+e7i6WF2tzOzdWpDk8DWrLLy12HFIuGc31GLwJv/KUdcA==
-
-#wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 61dd12c1-c8fe-4a83-8c1f-dda7103ee57e -s o+60hlahNs58NIM19cwO4rcdeYdaXYJB2iX+DRXMV+e7i6WF2tzOzdWpDk8DWrLLy12HFIuGc31GLwJv/KUdcA== -d opinsights.azure.com
-
 
 perl -pi -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php/7.4/fpm/php.ini
 perl -pi -e "s/upload_max_filesize=2M/upload_max_filesize=100M/g" /etc/php/7.4/fpm/php.ini
@@ -149,16 +136,10 @@ ln -s /var/log/nginx/access.log /var/log/nginx/access.txt
 ln -s /var/log/nginx/error.log /var/log/nginx/error.txt
 ln -s /var/log/syslog /var/log/syslog.txt
 
-#update-alternatives --install /usr/sbin/python python /usr/bin/python3 20
+apt install python-minimal
+update-alternatives --install /usr/sbin/python python /usr/bin/python2 20
 
-#wget https://github.com/microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_v1.13.7-0/omsagent-1.13.7-0.universal.x64.sh
-#chmod +x omsagent-1.13.7-0.universal.x64.sh
-#./omsagent-1.13.7-0.universal.x64.sh --install -w 61dd12c1-c8fe-4a83-8c1f-dda7103ee57e -s o+60hlahNs58NIM19cwO4rcdeYdaXYJB2iX+DRXMV+e7i6WF2tzOzdWpDk8DWrLLy12HFIuGc31GLwJv/KUdcA==
-
-#apt install python-minimal
-#update-alternatives --install /usr/sbin/python python /usr/bin/python2 20
-
-#wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 61dd12c1-c8fe-4a83-8c1f-dda7103ee57e -s o+60hlahNs58NIM19cwO4rcdeYdaXYJB2iX+DRXMV+e7i6WF2tzOzdWpDk8DWrLLy12HFIuGc31GLwJv/KUdcA== -d opinsights.azure.com
+wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 61dd12c1-c8fe-4a83-8c1f-dda7103ee57e -s o+60hlahNs58NIM19cwO4rcdeYdaXYJB2iX+DRXMV+e7i6WF2tzOzdWpDk8DWrLLy12HFIuGc31GLwJv/KUdcA== -d opinsights.azure.com
 
 
 read -p "Press [ENTER] to display your WordPress MySQL database details!"
