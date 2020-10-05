@@ -155,10 +155,10 @@ ln -s /var/log/syslog /var/log/syslog.txt
 #chmod +x omsagent-1.13.7-0.universal.x64.sh
 #./omsagent-1.13.7-0.universal.x64.sh --install -w 61dd12c1-c8fe-4a83-8c1f-dda7103ee57e -s o+60hlahNs58NIM19cwO4rcdeYdaXYJB2iX+DRXMV+e7i6WF2tzOzdWpDk8DWrLLy12HFIuGc31GLwJv/KUdcA==
 
-apt install python-minimal
-update-alternatives --install /usr/sbin/python python /usr/bin/python2 20
+#apt install python-minimal
+#update-alternatives --install /usr/sbin/python python /usr/bin/python2 20
 
-wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 61dd12c1-c8fe-4a83-8c1f-dda7103ee57e -s o+60hlahNs58NIM19cwO4rcdeYdaXYJB2iX+DRXMV+e7i6WF2tzOzdWpDk8DWrLLy12HFIuGc31GLwJv/KUdcA== -d opinsights.azure.com
+#wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 61dd12c1-c8fe-4a83-8c1f-dda7103ee57e -s o+60hlahNs58NIM19cwO4rcdeYdaXYJB2iX+DRXMV+e7i6WF2tzOzdWpDk8DWrLLy12HFIuGc31GLwJv/KUdcA== -d opinsights.azure.com
 
 
 read -p "Press [ENTER] to display your WordPress MySQL database details!"
