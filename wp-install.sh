@@ -20,6 +20,20 @@ MY_DOMAIN=$1
 #read -p "Type your Email for the domain name, then press [ENTER] : " EMAIL
 EMAIL=$2
 
+Workspace_Id=$3
+Key=$4
+#Install OMS agent
+
+ln -s /var/log/mysql/error.log /var/log/mysql/error.txt
+ln -s /var/log/letsencrypt/letsencrypt.log /var/log/letsencrypt/letsencrypt.txt
+ln -s /var/log/nginx/access.log /var/log/nginx/access.txt
+ln -s /var/log/nginx/error.log /var/log/nginx/error.txt
+ln -s /var/log/syslog /var/log/syslog.txt
+
+wget https://raw.githubusercontent.com/SebastianP98/OmsAgent/main/omsAgent.sh?token=ADXYLXLWMNOEBX5Z7XF6CEK7VKNIG
+chmod +x omsAgent.sh
+./omsAgent.sh $Workspace_Id $Key
+
 apt update -y
 apt upgrade -y
 apt install nginx -y
@@ -129,18 +143,6 @@ perl -pi -e "s/#|;#//g" /etc/nginx/sites-available/$MY_DOMAIN
 service nginx restart
 
 rm -r /tmp/*
-
-ln -s /var/log/mysql/error.log /var/log/mysql/error.txt
-ln -s /var/log/letsencrypt/letsencrypt.log /var/log/letsencrypt/letsencrypt.txt
-ln -s /var/log/nginx/access.log /var/log/nginx/access.txt
-ln -s /var/log/nginx/error.log /var/log/nginx/error.txt
-ln -s /var/log/syslog /var/log/syslog.txt
-
-apt install python-minimal
-update-alternatives --install /usr/sbin/python python /usr/bin/python2 20
-
-wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 61dd12c1-c8fe-4a83-8c1f-dda7103ee57e -s o+60hlahNs58NIM19cwO4rcdeYdaXYJB2iX+DRXMV+e7i6WF2tzOzdWpDk8DWrLLy12HFIuGc31GLwJv/KUdcA== -d opinsights.azure.com
-
 
 read -p "Press [ENTER] to display your WordPress MySQL database details!"
 echo "Database Name: $dbname"
