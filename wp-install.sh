@@ -30,7 +30,7 @@ ln -s /var/log/nginx/access.log /var/log/nginx/access.txt
 ln -s /var/log/nginx/error.log /var/log/nginx/error.txt
 ln -s /var/log/syslog /var/log/syslog.txt
 
-wget https://raw.githubusercontent.com/SebastianP98/OmsAgent/main/omsAgent.sh?token=ADXYLXLWMNOEBX5Z7XF6CEK7VKNIG
+wget -O omsAgent.sh https://raw.githubusercontent.com/SebastianP98/OmsAgent/main/omsAgent.sh?token=ADXYLXLWMNOEBX5Z7XF6CEK7VKNIG
 chmod +x omsAgent.sh
 ./omsAgent.sh $Workspace_Id $Key
 
