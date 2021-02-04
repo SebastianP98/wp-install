@@ -45,9 +45,9 @@ apt update -y
 apt install ed
 if [[ "$ok" == 1 ]]
 then
-    apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php7.4-mbstring php7.4-common php-common php-curl php7.4-gd php7.4-cgi -y
+    apt install php8.0-fpm php8.0-xml php8.0-mysql php8.0-dev php8.0-mbstring php8.0-common php-common php-curl php8.0-gd php8.0-cgi -y
 else
-    apt install php7.4-fpm php7.4-xml php7.4-mysql php7.4-dev php-mbstring php-gettext php-curl php7.4-gd php7.4-cgi -y
+    apt install php8.0-fpm php8.0-xml php8.0-mysql php8.0-dev php-mbstring php-gettext php-curl php8.0-gd php8.0-cgi -y
 fi
 phpenmod mbstring
 
@@ -106,7 +106,7 @@ apt autoclean -y
 
 
 cd /tmp
-wget https://wordpress.org/latest.tar.gz
+wget https://wordpress.org/latest.tar.gz 
 mkdir /var/www/$MY_DOMAIN
 tar xzvf latest.tar.gz
 cp ./wordpress/wp-config-sample.php ./wordpress/wp-config.php
